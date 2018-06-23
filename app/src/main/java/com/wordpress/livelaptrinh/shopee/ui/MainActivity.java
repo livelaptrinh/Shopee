@@ -1,7 +1,9 @@
-package com.wordpress.livelaptrinh.shopee;
+package com.wordpress.livelaptrinh.shopee.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.wordpress.livelaptrinh.shopee.R;
 
 public class MainActivity extends AppCompatActivity {
 
