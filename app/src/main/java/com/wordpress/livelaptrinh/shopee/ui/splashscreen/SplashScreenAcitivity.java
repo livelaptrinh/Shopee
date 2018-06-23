@@ -1,5 +1,6 @@
 package com.wordpress.livelaptrinh.shopee.ui.splashscreen;
 
+import com.wordpress.livelaptrinh.shopee.R;
 import com.wordpress.livelaptrinh.shopee.ui.activities.BaseActivity;
 
 /**
@@ -7,4 +8,14 @@ import com.wordpress.livelaptrinh.shopee.ui.activities.BaseActivity;
  */
 
 public class SplashScreenAcitivity extends BaseActivity {
+
+    @Override
+    public int getLayoutResID() {
+        return R.layout.activity_splash_screen;
+    }
+
+    @Override
+    public void initUI() {
+
+    }
 }
