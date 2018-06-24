@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.activities.MainActivity">
+
+        </activity>
+
+        <activity
+            android:name=".ui.splashscreen.SplashScreenAcitivity"
+            android:theme="@style/ThemeFullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

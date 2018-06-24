@@ -3,9 +3,11 @@ package com.wordpress.livelaptrinh.shopee.widgets;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.AssetManager;
+import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.wordpress.livelaptrinh.shopee.R;
@@ -25,22 +27,32 @@ public class CustomTextView extends TextView {
 
     public CustomTextView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        init(context, attrs);
     }
 
     public CustomTextView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        setTypeface(getTypefaceFromName(context, attrs));
+        init(context, attrs);
     }
 
 
-    private Typeface getTypefaceFromName(Context context, AttributeSet attrs) {
-        String fontName = attrs.getAttributeName(R.attr.fontName);
-        Typeface tf = Typeface.defaultFromStyle(Typeface.NORMAL);
-        if (!fontName.isEmpty()) {
-            tf = Typeface.createFromAsset(context.getAssets(), "fonts/" + fontName);
+    private void init(Context context, AttributeSet attrs) {
+        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.CustomTextView);
+        final int size = array.getIndexCount();
+        for (int i = 0; i < size; i++) {
+            int attr = array.getIndex(i);
+            if (attr == R.styleable.CustomTextView_fontName) {
+                try {
+                    Typeface font = Typeface.createFromAsset(getResources().getAssets(), "fonts/" + array.getString(attr));
+                    if (font != null) {
+                        this.setTypeface(font);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
         }
-        return tf;
     }
 
 }
